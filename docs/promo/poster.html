@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>GS BIOLAB 소개 포스터</title>
+<!-- 소개 포스터 1장 (1080×1350). PNG로 뽑기: docs/promo/README 참고 — 브라우저 헤드리스 스크린샷 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700;800&display=block" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+  :root {
+    --accent: #2fbf9a;
+    --lab-bg: #e7f1ef;
+    --ink: #13202a;
+    --void: #0d1015;
+    --danger: #e63946;
+    --warn: #ffb000;
+    --violet: #9b5de5;
+    --cyan: #32ade6;
+    --text: #dce7f5;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: var(--void); }
+  body { font-family: "Noto Sans KR", sans-serif; color: var(--ink); }
+  .mono { font-family: "JetBrains Mono", Consolas, monospace; }
+
+  /* ── 위: 밝은 연구소 ── */
+  .top {
+    position: absolute; inset: 0 0 auto 0; height: 610px;
+    background: radial-gradient(120% 90% at 50% 0%, #ffffff 0%, var(--lab-bg) 60%, #d3e6e2 100%);
+    padding: 46px 56px 0;
+  }
+  .kicker { font-size: 19px; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+  h1 { font-family: "JetBrains Mono", monospace; font-weight: 800; font-size: 104px; line-height: 1; letter-spacing: .02em; margin-top: 12px; }
+  h1 .leaf { color: var(--accent); }
+  .sub { font-size: 25px; font-weight: 500; margin-top: 14px; color: #33474f; }
+  .sub b { color: var(--ink); font-weight: 900; }
+  .shot {
+    position: absolute; overflow: hidden; border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(13, 32, 42, .22), 0 0 0 1px rgba(13, 32, 42, .08);
+  }
+  .shot img { position: absolute; display: block; }
+  .s1 { left: 56px; right: 56px; top: 278px; height: 300px; }
+  .s1 img { width: 968px; left: 0; top: -150px; }
+  .tag {
+    position: absolute; left: 16px; top: 14px; padding: 7px 14px; border-radius: 999px;
+    font: 800 17px "JetBrains Mono", "Noto Sans KR", monospace; letter-spacing: .02em;
+    background: rgba(255,255,255,.92); color: var(--ink);
+  }
+  .tag.dark { background: rgba(13,16,21,.85); color: var(--text); }
+  .note { position: absolute; right: 16px; bottom: 14px; padding: 8px 14px; border-radius: 10px; font-size: 16px; font-weight: 700; background: rgba(255,255,255,.92); }
+
+  /* ── 가운데: 글리치 띠 (STAGE 2) ── */
+  .band {
+    position: absolute; left: 0; right: 0; top: 610px; height: 150px;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 2px, transparent 2px 5px),
+      linear-gradient(90deg, #1a0f18, #2a0d16 45%, #10161f);
+    overflow: hidden;
+  }
+  .band::before, .band::after { content: ""; position: absolute; left: 0; right: 0; height: 6px; }
+  .band::before { top: 18px; background: var(--danger); opacity: .8; }
+  .band::after { bottom: 26px; background: var(--cyan); opacity: .6; transform: translateX(80px); }
+  .s2 { left: 56px; top: 18px; width: 220px; height: 114px; border-radius: 10px; box-shadow: 0 0 0 2px rgba(230,57,70,.6); }
+  .s2 img { width: 262px; left: -21px; top: -10px; }
+  .band-text { position: absolute; left: 304px; top: 26px; color: var(--text); }
+  .band-text .k { font: 800 17px "JetBrains Mono", "Noto Sans KR", monospace; letter-spacing: .06em; color: var(--warn); }
+  .glitch {
+    font-size: 40px; font-weight: 900; margin-top: 6px; color: #fff; position: relative;
+    text-shadow: -3px 0 rgba(230,57,70,.9), 3px 0 rgba(50,173,230,.85);
+  }
+  .band-text .d { font-size: 18px; margin-top: 6px; color: #c9b8c2; }
+
+  /* ── 아래: 격리 구역 (STAGE 3) ── */
+  .bottom {
+    position: absolute; left: 0; right: 0; top: 760px; bottom: 0;
+    background: radial-gradient(90% 80% at 50% 10%, #1b1f2a 0%, var(--void) 70%);
+    padding: 34px 56px 0; color: var(--text);
+  }
+  .bottom .k { font: 800 18px "JetBrains Mono", monospace; letter-spacing: .24em; color: var(--danger); }
+  .bottom h2 { font-size: 36px; font-weight: 900; margin-top: 6px; color: #fff; }
+  .bottom h2 span { color: var(--danger); }
+  .zones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+  .zone { position: relative; height: 196px; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
+  .zone img { position: absolute; width: 470px; left: -78px; top: -36px; }
+  .zone .cap {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 12px 10px;
+    background: linear-gradient(transparent, rgba(5,7,10,.95) 55%);
+  }
+  .zone .no { font: 800 15px "JetBrains Mono", monospace; letter-spacing: .1em; }
+  .zone .nm { font-size: 18px; font-weight: 900; color: #fff; margin-top: 2px; }
+  .zone .sj { font-size: 14px; color: #aab6c6; margin-top: 1px; }
+  .z1 .no { color: var(--danger); } .z2 .no { color: var(--warn); } .z3 .no { color: #c39bff; }
+  .feats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .chip { padding: 7px 13px; border-radius: 999px; font-size: 15.5px; white-space: nowrap; font-weight: 700; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); }
+  .chip.hidden { border-color: rgba(155,93,229,.7); color: #e3d0ff; background: rgba(155,93,229,.16); }
+  .chip.red { border-color: rgba(230,57,70,.6); color: #ffd3d6; background: rgba(230,57,70,.14); }
+
+  .foot { position: absolute; left: 56px; right: 56px; bottom: 34px; display: flex; align-items: center; gap: 22px; }
+  .qr { width: 118px; height: 118px; background: #fff; border-radius: 10px; padding: 7px; flex: none; }
+  .qr svg { width: 100%; height: 100%; display: block; }
+  .url { font: 800 27px "JetBrains Mono", monospace; color: #fff; }
+  .how { font-size: 16px; color: #aab6c6; margin-top: 8px; line-height: 1.55; }
+  .how b { color: var(--text); }
+  .flow { margin-left: auto; text-align: right; font: 700 15px "JetBrains Mono", "Noto Sans KR", monospace; color: #7f8da0; line-height: 1.6; }
+  .flow b { color: var(--accent); } .flow i { font-style: normal; color: var(--danger); }
+</style>
+</head>
+<body>
+  <section class="top">
+    <div class="kicker">생명과학 축제 부스 · 방탈출 게임</div>
+    <h1><span class="leaf">GS</span> BIOLAB</h1>
+    <p class="sub">평화로운 연구소 견학인 줄 알았다. <b>생명과학 지식만이 탈출구다.</b></p>
+    <div class="shot s1">
+      <img src="shots/stage1.jpg" alt="STAGE 1 GS BIOLAB 연구소">
+      <div class="tag">STAGE 1 · 밝은 연구소 견학</div>
+      <div class="note">통합과학1·2 생명 영역 · 장치 3대가 보안코드를 하나씩</div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shot s2"><img src="shots/stage2-glitch.jpg" alt="STAGE 2 선물 교환 키오스크 글리치"></div>
+    <div class="band-text">
+      <div class="k">STAGE 2 · 선물 교환 키오스크</div>
+      <div class="glitch">선물 코드를 넣는 순간, 화면이 깨진다</div>
+      <div class="d">ERR 0x5EED — 격리 프로토콜 발동 · 도시 전역 감염 확산</div>
+    </div>
+  </section>
+
+  <section class="bottom">
+    <div class="k">STAGE 3 · QUARANTINE</div>
+    <h2>격리 구역 세 곳을 뚫고 <span>살아서 나가라</span></h2>
+    <div class="zones">
+      <div class="zone z1"><img src="shots/stage3-1.jpg" alt="3-1"><div class="cap"><div class="no">3-1</div><div class="nm">생명 현상 연구팀</div><div class="sj">생명과학 · 활동전위·혈당·면역</div></div></div>
+      <div class="zone z2"><img src="shots/stage3-2.jpg" alt="3-2"><div class="cap"><div class="no">3-2</div><div class="nm">생명 에너지 연구팀</div><div class="sj">세포와 물질대사 · 세포호흡·효소·광합성</div></div></div>
+      <div class="zone z3"><img src="shots/stage3-3-danger.jpg" alt="3-3"><div class="cap"><div class="no">3-3</div><div class="nm">유전자 분석 연구팀</div><div class="sj">생물의 유전 · 복제·가계도·PCR</div></div></div>
+    </div>
+    <div class="feats">
+      <span class="chip red">좀비 거리·산소·ATP 생존</span>
+      <span class="chip">금 가는 유리</span>
+      <span class="chip">손전등 ON/OFF</span>
+      <span class="chip">교과서 용어 · 15문제</span>
+      <span class="chip hidden">HIDDEN · 최신 뉴스</span>
+    </div>
+    <div class="foot">
+      <div class="qr" id="qr"></div>
+      <div>
+        <div class="url">gsbiolab.vercel.app</div>
+        <div class="how"><b>PC · 크롬 전체화면 권장</b><br>방향키 이동 · <b>E</b> 조사 · 숫자 키 보안코드 · <b>F</b> 손전등</div>
+      </div>
+      <div class="flow"><b>STAGE 1</b> 연구소<br>→ STAGE 2 키오스크<br>→ <i>STAGE 3</i> 격리 구역</div>
+    </div>
+  </section>
+<script>
+  try {
+    const q = qrcode(0, "M");
+    q.addData("https://gsbiolab.vercel.app/");
+    q.make();
+    document.getElementById("qr").innerHTML = q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+  } catch (e) { document.getElementById("qr").textContent = "QR"; }
+</script>
+</body>
+</html>
